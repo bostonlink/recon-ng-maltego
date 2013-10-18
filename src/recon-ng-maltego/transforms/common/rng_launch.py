@@ -243,7 +243,7 @@ def run_pushpin(workspace, lat, longi):
     tf.write(rec_source)
     recfile = tf.name
     tf.close()
-    os.chdir("/Users/dbressler/tools/recon-ng")
+    os.chdir(config["recon-ng/reconng_path"])
     rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
     outp = rng_wrkspc.stdout.read()
     os.chdir(cwd)

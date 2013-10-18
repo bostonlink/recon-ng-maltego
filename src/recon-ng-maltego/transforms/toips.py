@@ -45,7 +45,7 @@ def dotransform(request, response, config):
         if ip[0] == request.value:
             e = IPv4Address(ip[1])
             e += Field("workspace", workspace, displayname='Workspace')
-            e += Field("domainname", request.value, displayname='Domain Name', matchingrule='loose')
+            e += Field("domainname", request.value, displayname='Domain Name')
             response += e
         else:
             e = IPv4Address(ip[1])

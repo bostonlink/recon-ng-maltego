@@ -1,10 +1,14 @@
 #!/usr/bin/env python
 
 from canari.maltego.entities import Person
-from common.entities import Workspace
-from common.reconng import db_connect, get_contacts
-from canari.framework import configure
 from canari.maltego.message import Field, Label
+from canari.easygui import multenterbox
+from common.reconng import db_connect, get_contacts
+from common.rng_launch import contacts_gather, contacts_enum, contacts_mangle
+from canari.framework import configure
+from common.entities import Workspace
+
+# from canari.maltego.message import Label
 
 __author__ = 'David Bressler (@bostonlink), GuidePoint Security, LLC.'
 __copyright__ = 'Copyright 2013, Recon-ng-maltego Project'
@@ -21,20 +25,37 @@ __all__ = [
 ]
 
 @configure(
-    label='To Fullname [recon-ng]',
-    description='Returns Fullnames (first, last) from the recon-ng workspace',
-    uuids=[ 'recon-ng-maltego.v2.WorkspaceToFullname' ],
-    inputs=[ ( 'Recon-ng', Workspace ) ],
+    label='Launch Contacts Recon [recon-ng]',
+    description='Launches recon-ng and gathers recon on contacts and ouputs all to a person',
+    uuids=[ 'recon-ng-maltego.v2.ContactsRecon' ],
+    inputs=[ ( 'Launch Recon-ng', Workspace ) ],
     remote=False,
     debug=True
 )
 
-def dotransform(request, response, config):
 
-    if 'workspace' in request.fields:
-        workspace = request.fields['workspace']
-    else:
-        workspace = request.value
+def dotransform(request, response, config):
+    workspace = request.value
+    contacts_gather(workspace)
+    contacts_enum(workspace)
+    msg = "Contact Mangle to Create Email addresses enter <fn>.<ln>, etc"
+    title = "Mangle Contacts to Emails"
+    fieldNames = ["Pattern"]
+    fieldValues = []
+    fieldValues = multenterbox(msg, title, fieldNames)
+
+    while 1:
+        if fieldValues is None:
+            break
+        errmsg = ""
+        for i in range(len(fieldNames)):
+            if fieldValues[i].strip() == "":
+                errmsg += ('"%s" is a required field.\n\n' % fieldNames[i])
+        if errmsg == "":
+            break  # no problems found
+        fieldValues = multenterbox(errmsg, title, fieldNames, fieldValues)
+
+    contacts_mangle(workspace, fieldValues[0])
 
     dbcon = db_connect(workspace)
     contact_list = get_contacts(dbcon)

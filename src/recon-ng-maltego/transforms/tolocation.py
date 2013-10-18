@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-from canari.maltego.entities import IPv4Address, Domain, Location 
+
+from canari.maltego.entities import IPv4Address, Domain, Location
 from common.reconng import db_connect, get_hosts
 from canari.framework import configure
 from canari.maltego.message import Field, MatchingRule

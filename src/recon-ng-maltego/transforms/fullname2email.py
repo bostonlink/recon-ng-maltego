@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 from canari.maltego.entities import Person, EmailAddress
 from common.reconng import db_connect, get_contacts
 from canari.framework import configure

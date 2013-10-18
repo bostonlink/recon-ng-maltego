@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 from canari.maltego.entities import IPv4Address, Domain
 from common.entities import Workspace
 from common.reconng import db_connect, get_hosts

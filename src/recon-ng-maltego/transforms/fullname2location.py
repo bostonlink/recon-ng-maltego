@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 from canari.maltego.entities import Person, Location
 from canari.framework import configure
 from canari.maltego.message import Field

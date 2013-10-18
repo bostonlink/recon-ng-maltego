@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 from canari.maltego.entities import Domain, IPv4Address
 from common.entities import Workspace
 from canari.maltego.message import Field

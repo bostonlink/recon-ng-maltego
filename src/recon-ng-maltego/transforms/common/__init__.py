@@ -12,5 +12,6 @@ __status__ = 'Development'
 
 __all__ = [
     'entities',
-    'reconng'
+    'reconng',
+    'rng_launch'
 ]

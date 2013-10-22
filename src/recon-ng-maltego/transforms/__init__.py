@@ -19,5 +19,13 @@ __all__ = [
     'tofullname',
     'fullname2email',
     'fullname2title',
-    'fullname2location'
+    'fullname2location',
+    'create_workspace',
+    'hosts_recon',
+    'contacts_recon',
+    'pushpin2twitter',
+    'pushpin2twit',
+    'pushpin2picasa',
+    'pushpin_recon',
+    'pushpin2shodan'
 ]

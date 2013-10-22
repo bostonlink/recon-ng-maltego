@@ -27,5 +27,6 @@ __all__ = [
     'pushpin2twit',
     'pushpin2picasa',
     'pushpin_recon',
-    'pushpin2shodan'
+    'pushpin2shodan',
+    'pushpin2flickr'
 ]

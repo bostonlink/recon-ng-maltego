@@ -33,7 +33,7 @@ Once you have the Canari framework installed and working, follow the directions 
 Install the package:
 
 ```bash
-$ git clone git@dc2asgit01.asmt.gps:david.bressler/recon-ng-maltego.git
+$ git clone [repo]
 $ cd recon-ng-maltego
 $ python setup.py install
 ```

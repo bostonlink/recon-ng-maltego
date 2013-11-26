@@ -28,7 +28,6 @@ def create_workspace(workspace):
     rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
     outp = rng_wrkspc.stdout.read()
     os.chdir(cwd)
-    return outp
 
 
 def set_domain(workspace, domain):
@@ -42,7 +41,6 @@ def set_domain(workspace, domain):
     rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
     outp = rng_wrkspc.stdout.read()
     os.chdir(cwd)
-    return outp
 
 
 def set_company(workspace, company):
@@ -56,7 +54,6 @@ def set_company(workspace, company):
     rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
     outp = rng_wrkspc.stdout.read()
     os.chdir(cwd)
-    return outp
 
 
 def set_radius(workspace, radius):
@@ -70,7 +67,6 @@ def set_radius(workspace, radius):
     rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
     outp = rng_wrkspc.stdout.read()
     os.chdir(cwd)
-    return outp
 
 # TODO set latitude and longitude
 
@@ -100,7 +96,6 @@ use recon/hosts/gather/http/web/yahoo_site\nrun\nexit\nexit"""
     rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
     outp = rng_wrkspc.stdout.read()
     os.chdir(cwd)
-    return outp
 
 
 def hosts_enum(workspace):
@@ -132,7 +127,6 @@ use recon/hosts/enum/http/web/xssed\nrun\nexit\nexit"""
     rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
     outp = rng_wrkspc.stdout.read()
     os.chdir(cwd)
-    return outp
 
 
 def hosts_geo(workspace):
@@ -150,7 +144,6 @@ use recon/hosts/geo/http/web/wigle\nrun\nexit\nexit"""
     rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
     outp = rng_wrkspc.stdout.read()
     os.chdir(cwd)
-    return outp
 
 
 def contacts_gather(workspace):
@@ -172,7 +165,6 @@ use recon/contacts/gather/http/web/pgp_search\nrun\nexit\nexit"""
     rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
     outp = rng_wrkspc.stdout.read()
     os.chdir(cwd)
-    return outp
 
 
 def contacts_enum(workspace):
@@ -190,7 +182,6 @@ use recon/contacts/enum/http/web/should_change_password\nrun\nexit\nexit"""
     rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
     outp = rng_wrkspc.stdout.read()
     os.chdir(cwd)
-    return outp
 
 
 def creds_gather(workspace):
@@ -211,7 +202,6 @@ def creds_gather(workspace):
     rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
     outp = rng_wrkspc.stdout.read()
     os.chdir(cwd)
-    return outp
 
 
 def creds_enum(workspace):
@@ -227,7 +217,6 @@ def creds_enum(workspace):
     rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
     outp = rng_wrkspc.stdout.read()
     os.chdir(cwd)
-    return outp
 
 def run_pushpin(workspace, lat, longi):
     rec_source = """set LATITUDE %f
@@ -247,7 +236,20 @@ def run_pushpin(workspace, lat, longi):
     rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
     outp = rng_wrkspc.stdout.read()
     os.chdir(cwd)
-    return outp
+
+
+def contacts_mangle(workspace, syntax):
+    rec_source = """use recon/contacts/support/mangle\nset PATTERN %s\nrun\nexit\nexit""" % syntax
+
+    cwd = os.getcwd()
+    tf = tempfile.NamedTemporaryFile(mode='w', delete=False)
+    tf.write(rec_source)
+    recfile = tf.name
+    tf.close()
+    os.chdir(config["recon-ng/reconng_path"])
+    rng_wrkspc = subprocess.Popen(["python", "recon-ng.py", "-w", workspace, "-r", recfile], stdout=subprocess.PIPE)
+    outp = rng_wrkspc.stdout.read()
+    os.chdir(cwd)
 
 
 # config["recon-ng/reconng_path"]

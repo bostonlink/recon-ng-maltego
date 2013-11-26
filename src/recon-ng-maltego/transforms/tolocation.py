@@ -43,8 +43,8 @@ def dotransform(request, response, config):
     for loc in host_list:
         if loc[0] == request.value or loc[1] == request.value:
             e = Location(str(loc[2]) + ', ' + str(loc[3]),
-                          latitude=float(int(loc[4])),
-                          longitude=float(int(loc[5])))
+                         latitude=float(int(loc[4])),
+                         longitude=float(int(loc[5])))
             e += Field("workspace", workspace, displayname='Workspace')
             response += e
 

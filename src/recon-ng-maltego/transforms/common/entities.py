@@ -47,3 +47,19 @@ class Reconng(ReconngmaltegoEntity):
 @EntityField(name='recon-ng-maltego.domain', propname='domain', displayname='Domain')
 class Workspace(ReconngmaltegoEntity):
     pass
+
+@EntityField(name='recon-ng-maltego.workspace', propname='workspace', displayname='Workspace')
+class TwitterPin(ReconngmaltegoEntity):
+    pass
+
+@EntityField(name='recon-ng-maltego.workspace', propname='workspace', displayname='Workspace')
+class ShodanPin(ReconngmaltegoEntity):
+    pass
+
+@EntityField(name='recon-ng-maltego.workspace', propname='workspace', displayname='Workspace')
+class PicasaPin(ReconngmaltegoEntity):
+    pass
+
+@EntityField(name='recon-ng-maltego.workspace', propname='workspace', displayname='Workspace')
+class FlickrPin(ReconngmaltegoEntity):
+    pass

@@ -24,7 +24,7 @@ __all__ = [
 ]
 
 @configure(
-    label='Gather Hosts [recon-ng]',
+    label='Launch Hosts Recon [recon-ng]',
     description='Launches recon-ng and gathers hosts and ouputs all hostnames as a Domain entity',
     uuids=[ 'recon-ng-maltego.v2.GatherHosts' ],
     inputs=[ ( 'Launch Recon-ng', Workspace ) ],

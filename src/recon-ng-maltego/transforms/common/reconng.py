@@ -17,8 +17,13 @@ __version__ = '0.1'
 __maintainer__ = 'David Bressler (@bostonlink), GuidePoint Security, LLC.'
 __email__ = 'david.bressler@guidepointsecurity.com'
 __status__ = 'Development'
-#workspace_path = os.path.join(config['recon-ng/reconng_path'],'workspaces')
 
+#sqlite> .schema
+# CREATE TABLE contacts (fname TEXT, lname TEXT, email TEXT, title TEXT, region TEXT, country TEXT);
+# CREATE TABLE creds (username TEXT, password TEXT, hash TEXT, type TEXT, leak TEXT);
+# CREATE TABLE dashboard (module TEXT PRIMARY KEY, runs INT);
+# CREATE TABLE hosts (host TEXT, ip_address TEXT, region TEXT, country TEXT, latitude TEXT, longitude TEXT);
+# CREATE TABLE pushpin (source TEXT, screen_name TEXT, profile_name TEXT, profile_url TEXT, media_url TEXT, thumb_url TEXT, message TEXT, latitude TEXT, longitude TEXT, time TEXT);
 
 def pick_workspace():
     """displays a list of recon-ng workspaces within the maltego gui to choose

@@ -5,6 +5,8 @@ Demo Video: http://youtu.be/bDnONoFJdQg
 
 ## 1.0 About
 
+12/10/2013 - Currently integrating to new version of recon-ng, have to change all path locations to reference workspaces.  Be patient.
+
 recon-ng-maltego is a local maltego transform pack built with the Canari Framework that integrates recon-ng data into maltego graphs.  It also enables you to launch module categories such as hosts, contacts, and pushpin modules directly from Maltego and query the results to create a graph.
 
 Directory Structure:

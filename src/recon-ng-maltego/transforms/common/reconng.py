@@ -29,7 +29,7 @@ def pick_workspace():
     """displays a list of recon-ng workspaces within the maltego gui to choose
     fromand returns the workspace selected"""
 
-    workspace_path = os.path.join(config['recon-ng/reconng_path'],
+    workspace_path = os.path.join(config['recon-ng/reconng_ws'],
                                   'workspaces')
 
     for p, d, f in os.walk(workspace_path):
@@ -45,7 +45,7 @@ def db_connect(workspace):
     """connect to the recon-ng workspace database and return the connection
     object"""
 
-    workspace_p = os.path.join(config['recon-ng/reconng_path'],
+    workspace_p = os.path.join(config['recon-ng/reconng_ws'],
                                'workspaces')
 
     db = os.path.join(workspace_p, workspace + '/data.db')
@@ -68,7 +68,7 @@ def get_config(workspace):
     workspace
     debug"""
 
-    workspace_p = os.path.join(config['recon-ng/reconng_path'],
+    workspace_p = os.path.join(config['recon-ng/reconng_ws'],
                                'workspaces')
 
     workspace_conf_path = os.path.join(workspace_p, workspace + '/config.dat')
